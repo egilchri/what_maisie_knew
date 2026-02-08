@@ -9,16 +9,58 @@
         <nav type="toc" id="calibre_link-33" role="doc-toc">
             <h2 class="calibre1">What Maisie Knew</h2>
 
-            <div style="background: #fdfdfd; padding: 20px; border: 1px solid #eee; border-radius: 12px; margin: 25px 0; text-align: center; font-family: sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-                <h3 style="margin-top: 0; color: #444; font-size: 1.2em;">🎧 Full Audiobook</h3>
-                <audio controls preload="metadata" style="width: 100%; max-width: 450px; margin-bottom: 12px;">
-                    <source src="https://media.githubusercontent.com/media/egilchri/what_maisie_knew/main/What_Maisie_Knew_Full.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <div style="font-size: 0.85em; color: #888;">
-                    <a href="https://media.githubusercontent.com/media/egilchri/what_maisie_knew/main/What_Maisie_Knew_Full.mp3" download style="color: #007aff; text-decoration: none; font-weight: bold;">⬇️ Download MP3 (112 MB)</a>
-                </div>
-            </div>
+<div style="background: #fdfdfd; padding: 20px; border: 1px solid #eee; border-radius: 12px; margin: 25px 0; text-align: center; font-family: sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+    <h3 style="margin-top: 0; color: #444; font-size: 1.2em;">🎧 Audiobook Navigator</h3>
+    
+    <div style="margin-bottom: 15px;">
+        <input type="text" id="chapterSearch" placeholder="Type 'Chapter IV'..." 
+               style="padding: 8px; width: 200px; border-radius: 5px; border: 1px solid #ccc;">
+        <button onclick="jumpToChapter()" 
+                style="padding: 8px 15px; border-radius: 5px; background: #007aff; color: white; border: none; cursor: pointer;">Jump</button>
+    </div>
+
+    <div id="active-chapter" style="font-weight: bold; color: #007aff; margin-bottom: 10px;">Introduction</div>
+
+    <audio id="audioPlayer" controls preload="metadata" style="width: 100%; max-width: 450px;">
+        <source src="https://media.githubusercontent.com/media/egilchri/what_maisie_knew/main/What_Maisie_Knew_Full.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<script>
+    // Map of chapter names to seconds (example values - adjust based on your MP3)
+    const chapterMap = {
+        "introduction": 0,
+        "chapter i": 120,   // Chapter 1 starts at 2:00
+        "chapter ii": 450,  // Chapter 2 starts at 7:30
+        "chapter iii": 900  // Chapter 3 starts at 15:00
+        // Add more chapters here...
+    };
+
+    const player = document.getElementById('audioPlayer');
+    const searchInput = document.getElementById('chapterSearch');
+    const display = document.getElementById('active-chapter');
+
+    function jumpToChapter() {
+        const query = searchInput.value.toLowerCase().trim();
+        if (chapterMap[query] !== undefined) {
+            player.currentTime = chapterMap[query];
+            player.play();
+        } else {
+            alert("Chapter not found. Use format: 'Chapter I'");
+        }
+    }
+
+    // Auto-update display as you listen
+    player.addEventListener('timeupdate', () => {
+        let current = "Introduction";
+        for (const [name, time] of Object.entries(chapterMap)) {
+            if (player.currentTime >= time) {
+                current = name.toUpperCase();
+            }
+        }
+        display.innerText = current;
+    });
+</script>
       <ol class="calibre2">
         <li class="calibre3">
           <a href="#calibre_link-1">Introduction</a>
