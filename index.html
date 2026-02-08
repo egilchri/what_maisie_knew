@@ -30,23 +30,49 @@
     // Map of chapter names to seconds (example values - adjust based on your MP3)
     const chapterMap = {
         "introduction": 0,
-        "chapter i": 120,   // Chapter 1 starts at 2:00
-        "chapter ii": 450,  // Chapter 2 starts at 7:30
-        "chapter iii": 900  // Chapter 3 starts at 15:00
-        // Add more chapters here...
-    };
-
-    const player = document.getElementById('audioPlayer');
-    const searchInput = document.getElementById('chapterSearch');
-    const display = document.getElementById('active-chapter');
-
-    function jumpToChapter() {
+        "chapter 1": 523,
+        "chapter 2": 938,
+        "chapter 3": 1364,
+        "chapter 4": 1693,
+        "chapter 5": 2167,
+        "chapter 6": 2693,
+        "chapter 7": 3344,
+        "chapter 8": 4136,
+        "chapter 9": 5276,
+        "chapter 10": 6191,
+        "chapter 11": 6932,
+        "chapter 12": 7994,
+        "chapter 13": 9074,
+        "chapter 14": 9948,
+        "chapter 15": 10932,
+        "chapter 16": 11886,
+        "chapter 17": 12908,
+        "chapter 18": 13877,
+        "chapter 19": 14884,
+        "chapter 20": 16240,
+        "chapter 21": 17885,
+        "chapter 22": 19059,
+        "chapter 23": 19814,
+        "chapter 24": 20726,
+        "chapter 25": 21914,
+        "chapter 26": 22985,
+        "chapter 27": 24101,
+        "chapter 28": 24854,
+        "chapter 29": 25707,
+        "chapter 30": 26855,
+        "chapter 31": 28326,
+        };
+        
+        const player = document.getElementById('audioPlayer');
+        const searchInput = document.getElementById('chapterSearch');
+        const display = document.getElementById('active-chapter');
+        function jumpToChapter() {
         const query = searchInput.value.toLowerCase().trim();
-        if (chapterMap[query] !== undefined) {
+            if (chapterMap[query] !== undefined) {
             player.currentTime = chapterMap[query];
             player.play();
-        } else {
-            alert("Chapter not found. Use format: 'Chapter I'");
+            } else {
+              alert("Chapter not found. Use format: 'Chapter I'");
         }
     }
 
