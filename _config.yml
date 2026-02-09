@@ -1,3 +1,6 @@
-title: What Maisie Knew Bilingual Edition
-remote_theme: pages-themes/minimal@v0.2.0 # Optional: picks a clean theme
-permalink: /:title/
+title: What Maisie Knew
+baseurl: "/what_maisie_knew" # Ensure this matches your repo name
+url: "https://egilchri.github.io"
+
+
+
