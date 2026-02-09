@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body>
+    <nav>
+        <h2>{{ site.title }}</h2>
+        {% include audio_player.html %}
+    </nav>
+
+    {{ content }}
+</body>
+</html>
